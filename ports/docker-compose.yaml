@@ -7,7 +7,7 @@ services:
     container_name: nginx-port8080
     image: nginx:latest
     ports:
-    - "8080:80"
+      - "8080:80"
   
   # long syntax with object
   nginx-port8081:
