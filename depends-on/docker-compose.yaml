@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  postgres-example:
+    container_name: postgres-example
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=secret
+
+  java-postgres:
+    container_name: java-postgres
+    image: java-application:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-example
