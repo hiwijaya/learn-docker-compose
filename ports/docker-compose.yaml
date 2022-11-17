@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+
+  # short syntax
+  nginx-port8080: 
+    container_name: nginx-port8080
+    image: nginx:latest
+    ports:
+    - "8080:80"
+  
+  # long syntax with object
+  nginx-port8081:
+    container_name: nginx-port8081
+    image: nginx:latest
+    ports:
+      - protocol: tcp
+        published: 8081
+        target: 80
