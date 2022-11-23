@@ -1,9 +1,13 @@
 FROM python:3.8-slim
 
-WORKDIR /flask-application
+ARG BASE_PATH=/flask-application
 
-RUN groupadd -r flaskgroup && useradd -r -g flaskgroup flaskuser
-RUN chown -R flaskuser:flaskgroup /flask-application
+WORKDIR ${BASE_PATH}
+
+RUN addgroup --system flaskgroup
+RUN adduser --system --disabled-password flaskuser 
+RUN adduser flaskuser flaskgroup
+RUN chown -R flaskuser:flaskgroup ${BASE_PATH}
 
 USER flaskuser
 
